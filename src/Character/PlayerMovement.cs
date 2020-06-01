@@ -8,35 +8,35 @@ namespace Character
 
         public float runSpeed = 40f;
 
-        float horizontalMove = 0f;
-        bool jump = false;
-        bool crouch = false;
+        private float _horizontalMove;
+        private bool _jump;
+        private bool _crouch;
 
         // Update is called once per frame
         void Update()
         {
-            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+            _horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
             if (Input.GetButtonDown("Jump"))
             {
-                jump = true;
+                _jump = true;
             }
 
             if (Input.GetButtonDown("Crouch"))
             {
-                crouch = true;
+                _crouch = true;
             }
             else if (Input.GetButtonUp("Crouch"))
             {
-                crouch = false;
+                _crouch = false;
             }
         }
 
         void FixedUpdate()
         {
             // Move our character
-            controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-            jump = false;
+            controller.Move(_horizontalMove * Time.fixedDeltaTime, _crouch, _jump);
+            _jump = false;
         }
     }
 }

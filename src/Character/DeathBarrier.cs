@@ -10,7 +10,7 @@ namespace Character
         public float deathBarrierX = -2f;
         public float deathBarrierY = -2f;
 
-        public bool checkX = false;
+        public bool checkX;
         public bool checkY = true;
     
         private void Update()
